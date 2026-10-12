@@ -350,7 +350,7 @@
                 type: "Full Album",
                 date: "2024.05.08",
                 titleTrack: "Girls Never Die",
-                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/240513_tripleS_Yoon_Seo-yeon.jpg/800px-240513_tripleS_Yoon_Seo-yeon.jpg",
+                cover: "/assets/member-01.jpg",
                 tracks: ["S", "Girls Never Die", "Heart Raider", "Midnight Flower", "White Soul Sneakers", "Chiyou", "24", "Beyond the Beyond"]
             },
             {
@@ -359,7 +359,7 @@
                 type: "Sub-Unit Mini Album",
                 date: "2024.10.23",
                 titleTrack: "Performante",
-                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/240513_tripleS_Jeong_Hye-rin.jpg/800px-240513_tripleS_Jeong_Hye-rin.jpg",
+                cover: "/assets/member-02.jpg",
                 tracks: ["Performante", "Visionary", "Atmosphere", "Bionic Power"]
             },
             {
@@ -368,7 +368,7 @@
                 type: "Sub-Unit Mini Album",
                 date: "2022.10.28",
                 titleTrack: "Generation",
-                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/240513_tripleS_Kim_Yoo-yeon.jpg/800px-240513_tripleS_Kim_Yoo-yeon.jpg",
+                cover: "/assets/member-05.jpg",
                 tracks: ["Access", "Generation", "Rolex", "Charla", "Dimension"]
             },
             {
@@ -377,7 +377,7 @@
                 type: "Sub-Unit Mini Album",
                 date: "2023.05.04",
                 titleTrack: "Cherry Talk",
-                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/240513_tripleS_Kim_Chae-yeon.jpg/800px-240513_tripleS_Kim_Chae-yeon.jpg",
+                cover: "/assets/member-04.jpg",
                 tracks: ["Cherry Talk", "Touch", "Hide & Seek", "Deja-Vu"]
             },
             {
@@ -386,7 +386,7 @@
                 type: "Sub-Unit Mini Album",
                 date: "2023.08.17",
                 titleTrack: "Girls' Capitalism",
-                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/240513_tripleS_Gong_Yu-bin.jpg/800px-240513_tripleS_Gong_Yu-bin.jpg",
+                cover: "/assets/member-08.jpg",
                 tracks: ["Girls' Capitalism", "Complexity", "Black Soul Dress", "Speed Love"]
             },
             {
@@ -395,7 +395,7 @@
                 type: "Sub-Unit Mini Album",
                 date: "2023.10.11",
                 titleTrack: "Invincible",
-                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/240513_tripleS_Kotone.jpg/800px-240513_tripleS_Kotone.jpg",
+                cover: "/assets/member-11.jpg",
                 tracks: ["Invincible", "Rhodanthe", "Heavy Metal Wings", "37.5 Celsius"]
             }
         ];
@@ -435,18 +435,18 @@
 
         // MEMBERS DATA
         const TRIPLES_MEMBERS = [
-            { sNum: "S1", name: "Yoon SeoYeon", korName: "윤서연", birthday: "2003.08.06", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/240513_tripleS_Yoon_Seo-yeon.jpg/800px-240513_tripleS_Yoon_Seo-yeon.jpg", subunits: ["+(KR)ystal Eyes", "LOVElution"] },
-            { sNum: "S2", name: "Jeong HyeRin", korName: "정혜린", birthday: "2007.04.12", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/240513_tripleS_Jeong_Hye-rin.jpg/800px-240513_tripleS_Jeong_Hye-rin.jpg", subunits: ["Acid Angel from Asia", "LOVElution", "Visionary Vision"] },
-            { sNum: "S3", name: "Lee JiWoo", korName: "이지우", birthday: "2005.10.24", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/240513_tripleS_Lee_Ji-woo.jpg/800px-240513_tripleS_Lee_Ji-woo.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
-            { sNum: "S4", name: "Kim ChaeYeon", korName: "김채연", birthday: "2004.12.04", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/240513_tripleS_Kim_Chae-yeon.jpg/800px-240513_tripleS_Kim_Chae-yeon.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
-            { sNum: "S5", name: "Kim YooYeon", korName: "김유연", birthday: "2001.02.09", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/240513_tripleS_Kim_Yoo-yeon.jpg/800px-240513_tripleS_Kim_Yoo-yeon.jpg", subunits: ["Acid Angel from Asia", "EVOLution", "Visionary Vision"] },
-            { sNum: "S6", name: "Kim SooMin", korName: "김수민", birthday: "2007.10.03", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/240513_tripleS_Kim_Soo-min.jpg/800px-240513_tripleS_Kim_Soo-min.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
-            { sNum: "S7", name: "Kim NaKyoung", korName: "김나경", birthday: "2002.10.13", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/240513_tripleS_Kim_Na-kyoung.jpg/800px-240513_tripleS_Kim_Na-kyoung.jpg", subunits: ["Acid Angel from Asia", "EVOLution", "Visionary Vision"] },
-            { sNum: "S8", name: "Gong YuBin", korName: "공유빈", birthday: "2005.02.03", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/240513_tripleS_Gong_Yu-bin.jpg/800px-240513_tripleS_Gong_Yu-bin.jpg", subunits: ["Acid Angel from Asia", "LOVElution", "Visionary Vision"] },
-            { sNum: "S9", name: "Kaede", korName: "카에데", birthday: "2005.12.20", nationality: "Japan 🇯🇵", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/240513_tripleS_Kaede.jpg/800px-240513_tripleS_Kaede.jpg", subunits: ["LOVElution", "Visionary Vision"] },
-            { sNum: "S10", name: "Seo DaHyun", korName: "서다현", birthday: "2003.01.08", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/240513_tripleS_Seo_Da-hyun.jpg/800px-240513_tripleS_Seo_Da-hyun.jpg", subunits: ["LOVElution", "Aria"] },
-            { sNum: "S11", name: "Kotone", korName: "코토네", birthday: "2004.03.10", nationality: "Japan 🇯🇵", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/240513_tripleS_Kotone.jpg/800px-240513_tripleS_Kotone.jpg", subunits: ["EVOLution", "Visionary Vision"] },
-            { sNum: "S12", name: "Kwak YeonJi", korName: "곽연지", birthday: "2008.01.08", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/240513_tripleS_Kwak_Yeon-ji.jpg/800px-240513_tripleS_Kwak_Yeon-ji.jpg", subunits: ["EVOLution", "Visionary Vision"] }
+            { sNum: "S1", name: "Yoon SeoYeon", korName: "윤서연", birthday: "2003.08.06", nationality: "South Korea 🇰🇷", photo: "/assets/member-01.jpg", subunits: ["+(KR)ystal Eyes", "LOVElution"] },
+            { sNum: "S2", name: "Jeong HyeRin", korName: "정혜린", birthday: "2007.04.12", nationality: "South Korea 🇰🇷", photo: "/assets/member-02.jpg", subunits: ["Acid Angel from Asia", "LOVElution", "Visionary Vision"] },
+            { sNum: "S3", name: "Lee JiWoo", korName: "이지우", birthday: "2005.10.24", nationality: "South Korea 🇰🇷", photo: "/assets/member-03.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
+            { sNum: "S4", name: "Kim ChaeYeon", korName: "김채연", birthday: "2004.12.04", nationality: "South Korea 🇰🇷", photo: "/assets/member-04.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
+            { sNum: "S5", name: "Kim YooYeon", korName: "김유연", birthday: "2001.02.09", nationality: "South Korea 🇰🇷", photo: "/assets/member-05.jpg", subunits: ["Acid Angel from Asia", "EVOLution", "Visionary Vision"] },
+            { sNum: "S6", name: "Kim SooMin", korName: "김수민", birthday: "2007.10.03", nationality: "South Korea 🇰🇷", photo: "/assets/member-06.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
+            { sNum: "S7", name: "Kim NaKyoung", korName: "김나경", birthday: "2002.10.13", nationality: "South Korea 🇰🇷", photo: "/assets/member-07.jpg", subunits: ["Acid Angel from Asia", "EVOLution", "Visionary Vision"] },
+            { sNum: "S8", name: "Gong YuBin", korName: "공유빈", birthday: "2005.02.03", nationality: "South Korea 🇰🇷", photo: "/assets/member-08.jpg", subunits: ["Acid Angel from Asia", "LOVElution", "Visionary Vision"] },
+            { sNum: "S9", name: "Kaede", korName: "카에데", birthday: "2005.12.20", nationality: "Japan 🇯🇵", photo: "/assets/member-09.jpg", subunits: ["LOVElution", "Visionary Vision"] },
+            { sNum: "S10", name: "Seo DaHyun", korName: "서다현", birthday: "2003.01.08", nationality: "South Korea 🇰🇷", photo: "/assets/member-10.jpg", subunits: ["LOVElution", "Aria"] },
+            { sNum: "S11", name: "Kotone", korName: "코토네", birthday: "2004.03.10", nationality: "Japan 🇯🇵", photo: "/assets/member-11.jpg", subunits: ["EVOLution", "Visionary Vision"] },
+            { sNum: "S12", name: "Kwak YeonJi", korName: "곽연지", birthday: "2008.01.08", nationality: "South Korea 🇰🇷", photo: "/assets/member-12.jpg", subunits: ["EVOLution", "Visionary Vision"] }
         ];
 
         let currentPage = 'home';

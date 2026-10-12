@@ -15,48 +15,60 @@ URL routes.
 docker compose -f docker-compose.base44.yml up -d
 ```
 
-Served at <http://localhost:3000/>. Only the entry file `S` and the nginx config are
-bind-mounted, for two reasons:
+Served at <http://localhost:3000/>. The compose file bind-mounts the entry file `S`,
+the `assets/` directory, and the nginx config — not the repo root:
 
 1. `S` has no file extension. nginx cannot infer a MIME type from it, so
    `docker/nginx.base44.conf` forces `default_type text/html`. Without that the
-   browser downloads the file instead of rendering it (this also breaks `python -m
+   browser downloads the page instead of rendering it (this also breaks `python -m
    http.server`, which sends `application/octet-stream`).
 2. The repo directory is mode `0700` on the sandbox host, which the unprivileged
-   nginx worker user cannot traverse — mounting the whole directory gives 403.
+   nginx worker user cannot traverse — mounting the repo root as the web root gives
+   403. Mounting a single file or a subdirectory (as done for `S` and `assets/`)
+   works fine.
 
-If you add more static files or assets, add each one as its own volume entry in
-`docker-compose.base44.yml` (or mount directory by directory), and keep the
-`default_type text/html` in mind for any other extensionless file.
+If you add more static files or assets, add each one (or its directory) as a volume
+entry in `docker-compose.base44.yml`, and keep `default_type text/html` in mind for
+any other extensionless file. After changing volumes, run
+`docker compose -f docker-compose.base44.yml up -d` to recreate the container.
 
 ## Live editing
 
-There is no dev server and no hot reload. nginx re-reads the file on every request
+There is no dev server and no hot reload. nginx re-reads files on every request
 (caching is disabled), so an edit shows up as soon as the page is reloaded.
 
 ## External dependencies
 
-The page pulls Tailwind (CDN script), FontAwesome, Google Fonts and member photos
-from Wikimedia at runtime, so **the browser needs outbound internet access** to look
-right. These are client-side requests only; nothing is fetched by the container.
+At runtime the browser also fetches Tailwind (CDN script), FontAwesome and Google
+Fonts, so **outbound internet access is needed for the styling and icons**. All
+imagery is local; the container fetches nothing.
 
-### Known content gap: the member/album photos are dead links
+### Member / album imagery lives in `assets/`
 
-Every `photo`/`cover` URL in `S` points at a Wikimedia Commons thumbnail that does
-**not exist** — e.g.
-`commons/thumb/c/c5/240513_tripleS_Yoon_Seo-yeon.jpg/800px-...`. The Commons API
-reports `"missing"` for these titles, so they fail for every visitor regardless of
-environment (verified with `curl` and in the browser, while the Tailwind /
-FontAwesome / Google Fonts CDNs load fine). Member cards fall back to the empty
-dark box from their `bg-black` class, so the layout is intact but the roster,
-spotlight and discography grids show no imagery. Fixing this means replacing the
-URLs with real image sources (or local placeholder art) — a content change, not a
-setup problem.
+`TRIPLES_MEMBERS[].photo` and `TRIPLES_DISCOGRAPHY[].cover` point at
+`/assets/member-<NN>.jpg`, served by this same nginx service. Album covers reuse the
+associated member's photo, as the original page did.
+
+These are the real member photos from Wikimedia Commons (files named
+`TripleS S<n> <hangul name>.jpg`). They were **downloaded into the repo** because
+hotlinking Commons is unreliable here and previously produced a console full of
+`net::ERR_BLOCKED_BY_ORB` errors:
+
+- Commons rejects arbitrary thumbnail widths (`400, Use thumbnail sizes listed…`), so
+  the `/thumb/<hash>/<file>/800px-<file>` URLs the page originally used could never
+  load. The original filenames were also invented (`240513_tripleS_<Name>.jpg`) and do
+  not exist on Commons at all.
+- `upload.wikimedia.org` / `thumb.wikimedia.org` aggressively rate-limit this
+  environment (`429`), which the browser reports as `ERR_BLOCKED_BY_ORB` because the
+  error body is HTML.
+
+To swap a photo, overwrite `assets/member-<NN>.jpg` — no code change is needed. See
+`assets/CREDITS.md` for the source file of each image and the licence caveat.
 
 ## Verifying it works
 
 ```bash
-curl -sI http://localhost:3000/            # expect 200 + Content-Type: text/html
-curl -s http://localhost:3000/ | grep -c tripleS
-docker compose -f docker-compose.base44.yml ps   # web should be (healthy)
+curl -sI http://localhost:3000/                      # 200 + Content-Type: text/html
+curl -sI http://localhost:3000/assets/member-01.jpg  # 200 + image/jpeg
+docker compose -f docker-compose.base44.yml ps       # web should be (healthy)
 ```
