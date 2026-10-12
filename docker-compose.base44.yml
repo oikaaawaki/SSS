@@ -1,0 +1,26 @@
+# Base44 development environment.
+#
+# This repo is a single static page: the extensionless file "S" (SSS.log tripleS
+# fandom hub). There is no build step, so nginx serves the file directly from the
+# bind-mounted source and any edit is visible on the next page load.
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      # User-facing entry point.
+      - "3000:3000"
+    volumes:
+      # The entry file is mounted on its own: the repo directory is mode 0700 on
+      # the sandbox host, which the unprivileged nginx worker user cannot
+      # traverse (a whole-directory mount would return 403). Add any future
+      # static file/asset as its own volume entry.
+      - ./S:/usr/share/nginx/html/S:ro
+      - ./docker/nginx.base44.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: on-failure
+    healthcheck:
+      # Probes the actual served page content, not just an open port.
+      test: ["CMD-SHELL", "wget -q -O /tmp/hc http://127.0.0.1:3000/ && grep -q 'tripleS' /tmp/hc || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
