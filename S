@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSS.log | tripleS Comprehensive Fandom Hub & Wiki</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            500: '#000000',
+                            600: '#171717',
+                            700: '#262626',
+                            900: '#0a0a0a',
+                        },
+                        darkBg: '#050505',
+                        darkCard: '#0f0f0f',
+                        darkBorder: '#262626'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #404040;
+        }
+    </style>
+</head>
+<body class="bg-[#050505] text-neutral-200 antialiased min-h-screen flex flex-col selection:bg-white selection:text-black">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-[#050505]/95 backdrop-blur-md border-b border-neutral-800 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('home')">
+                    <!-- 3D Isometric "S" Logo SVG -->
+                    <div class="w-10 h-10 rounded-xl bg-black border border-neutral-700 flex items-center justify-center p-1.5 shadow-lg group hover:border-white transition-all">
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-white fill-current transition-transform duration-300 group-hover:scale-110" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="25,25 50,10 75,25 50,40" fill="#FFFFFF" />
+                            <polygon points="50,40 75,25 75,40 50,55" fill="#A3A3A3" />
+                            <polygon points="25,25 50,40 50,55 25,40" fill="#D4D4D4" />
+                            <polygon points="25,40 50,55 75,40 50,70" fill="#E5E5E5" opacity="0.85" />
+                            <polygon points="25,40 25,55 50,70 50,55" fill="#737373" />
+                            <polygon points="50,70 75,55 75,40 50,55" fill="#404040" />
+                            <polygon points="25,75 50,60 75,75 50,90" fill="#FFFFFF" />
+                            <polygon points="25,60 50,75 25,75" fill="#A3A3A3" />
+                            <polygon points="50,90 75,75 75,60 50,75" fill="#D4D4D4" />
+                            <path d="M25,25 L50,10 L75,25 L75,40 L50,55 L75,70 L50,90 L25,75 L25,60 L50,45 L25,30 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-xl tracking-wider text-white">SSS<span class="text-neutral-400">.log</span></span>
+                        <span class="text-[10px] uppercase font-mono px-2 py-0.5 ml-2 bg-neutral-800 text-neutral-300 rounded-full border border-neutral-700 font-semibold">Fandom Hub</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-1 border-l border-neutral-800 pl-6 text-xs">
+                    <button id="navHomeBtn" onclick="switchPage('home')" class="px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white">Home</button>
+                    <button id="navGuideBtn" onclick="switchPage('guide')" class="px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white">Fan Guide</button>
+                    <button id="navMembersBtn" onclick="switchPage('members')" class="px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white">Members</button>
+                    <button id="navSubunitsBtn" onclick="switchPage('subunits')" class="px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white">Sub-Units</button>
+                    <button id="navDiscographyBtn" onclick="switchPage('discography')" class="px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white">Discography</button>
+                    <button id="navGlossaryBtn" onclick="switchPage('glossary')" class="px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white">Glossary</button>
+                    <button id="navFansitesBtn" onclick="switchPage('fansites')" class="px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white">Fansites</button>
+                    <button id="navLoreBtn" onclick="switchPage('lore')" class="px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white">Lore & Info</button>
+                </nav>
+            </div>
+
+            <!-- Global Search Bar -->
+            <div class="hidden md:flex items-center flex-1 max-w-xs ml-4">
+                <div class="relative w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500 text-xs"></i>
+                    <input type="text" id="globalSearchInput" placeholder="Search members, terms, albums..." 
+                        class="w-full bg-neutral-900 border border-neutral-800 rounded-xl pl-9 pr-4 py-1.5 text-xs focus:outline-none focus:border-white text-neutral-200 placeholder-neutral-500 transition-all">
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Scrollable Navigation Bar -->
+        <div class="mt-2.5 lg:hidden flex gap-1.5 overflow-x-auto pb-1 custom-scrollbar text-xs">
+            <button id="mNavHome" onclick="switchPage('home')" class="px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium">Home</button>
+            <button id="mNavGuide" onclick="switchPage('guide')" class="px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium">Fan Guide</button>
+            <button id="mNavMembers" onclick="switchPage('members')" class="px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium">Members</button>
+            <button id="mNavSubunits" onclick="switchPage('subunits')" class="px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium">Sub-Units</button>
+            <button id="mNavDiscography" onclick="switchPage('discography')" class="px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium">Discography</button>
+            <button id="mNavGlossary" onclick="switchPage('glossary')" class="px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium">Glossary</button>
+            <button id="mNavFansites" onclick="switchPage('fansites')" class="px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium">Fansites</button>
+            <button id="mNavLore" onclick="switchPage('lore')" class="px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium">Lore & Info</button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-8 py-6 space-y-8">
+        
+        <!-- ================= HOME PAGE ================= -->
+        <div id="homePage" class="space-y-8">
+            <section class="relative rounded-3xl bg-neutral-900 border border-neutral-800 p-6 md:p-10 overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black border border-neutral-800 text-xs text-neutral-300 font-mono mb-4">
+                            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                            TRIPLES FANDOM WIKI & DATABASE
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase leading-tight">
+                            The Ultimate <br><span class="text-neutral-400">tripleS</span> Knowledge Base
+                        </h1>
+                        <p class="text-neutral-400 text-sm md:text-base mt-3 leading-relaxed">
+                            Discover member profiles, sub-unit dimensions, official discography, fan terminology, COSMO app guidance, and fan photography directories in one sleek place.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-6">
+                            <button onclick="switchPage('guide')" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white text-black hover:bg-neutral-200 transition-all">
+                                New WAV Fan Guide <i class="fa-solid fa-book-open ml-1.5"></i>
+                            </button>
+                            <button onclick="switchPage('members')" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-neutral-900 text-white border border-neutral-700 hover:border-white transition-all">
+                                Member Directory (S1-S24)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Portal Grid Cards -->
+                    <div class="grid grid-cols-2 gap-3 min-w-[280px]">
+                        <div onclick="switchPage('discography')" class="p-4 bg-black rounded-2xl border border-neutral-800 hover:border-neutral-500 cursor-pointer transition-all">
+                            <i class="fa-solid fa-compact-disc text-xl text-white mb-2"></i>
+                            <h4 class="font-bold text-sm text-white">Discography</h4>
+                            <p class="text-[11px] text-neutral-400 mt-0.5">Albums & Tracks</p>
+                        </div>
+                        <div onclick="switchPage('glossary')" class="p-4 bg-black rounded-2xl border border-neutral-800 hover:border-neutral-500 cursor-pointer transition-all">
+                            <i class="fa-solid fa-spell-check text-xl text-white mb-2"></i>
+                            <h4 class="font-bold text-sm text-white">Glossary</h4>
+                            <p class="text-[11px] text-neutral-400 mt-0.5">A-Z WAV Terms</p>
+                        </div>
+                        <div onclick="switchPage('fansites')" class="p-4 bg-black rounded-2xl border border-neutral-800 hover:border-neutral-500 cursor-pointer transition-all">
+                            <i class="fa-solid fa-camera text-xl text-white mb-2"></i>
+                            <h4 class="font-bold text-sm text-white">Fansites</h4>
+                            <p class="text-[11px] text-neutral-400 mt-0.5">Member Masterlists</p>
+                        </div>
+                        <div onclick="switchPage('lore')" class="p-4 bg-black rounded-2xl border border-neutral-800 hover:border-neutral-500 cursor-pointer transition-all">
+                            <i class="fa-solid fa-atom text-xl text-white mb-2"></i>
+                            <h4 class="font-bold text-sm text-white">Lore & Info</h4>
+                            <p class="text-[11px] text-neutral-400 mt-0.5">HAUS & Systems</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Member Preview -->
+            <section class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl font-black text-white uppercase tracking-tight">Roster Spotlight</h2>
+                        <p class="text-xs text-neutral-400">All 24 members of tripleS</p>
+                    </div>
+                    <button onclick="switchPage('members')" class="text-xs font-bold text-white bg-neutral-900 border border-neutral-800 px-3 py-1.5 rounded-xl hover:border-white transition-all">
+                        View All S1-S24 <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                <div id="homeMemberPreview" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3"></div>
+            </section>
+        </div>
+
+        <!-- ================= FAN GUIDE PAGE ================= -->
+        <div id="guidePage" class="hidden space-y-6">
+            <div>
+                <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 bg-neutral-900 px-3 py-1 rounded-full border border-neutral-800">Beginner & Fan Orientation</span>
+                <h2 class="text-3xl font-black text-white uppercase tracking-tight mt-2">New WAV Fan Guide</h2>
+                <p class="text-xs text-neutral-400 mt-1">Everything you need to understand the tripleS universe, COSMO ecosystem, and fan participation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Step 1: Concept & Structure -->
+                <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-3">
+                    <div class="w-8 h-8 rounded-xl bg-white text-black font-mono font-bold flex items-center justify-center">01</div>
+                    <h3 class="text-lg font-bold text-white">Understanding tripleS</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        tripleS is a 24-member K-pop girl group produced by MODHAUS. Instead of a fixed permanent group structure, tripleS operates through dynamic "Dimension" sub-units and full-group assemblies like ASSEMBLE24.
+                    </p>
+                </div>
+
+                <!-- Step 2: COSMO App -->
+                <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-3">
+                    <div class="w-8 h-8 rounded-xl bg-white text-black font-mono font-bold flex items-center justify-center">02</div>
+                    <h3 class="text-lg font-bold text-white">The COSMO App</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        The official mobile application **COSMO: the Gate** is the core hub for fans (WAVs). Here you collect digital photocards called **Objekts** and participate in official voting events called **Gravity**.
+                    </p>
+                </div>
+
+                <!-- Step 3: Objekts & Como -->
+                <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-3">
+                    <div class="w-8 h-8 rounded-xl bg-white text-black font-mono font-bold flex items-center justify-center">03</div>
+                    <h3 class="text-lg font-bold text-white">Objekts & COMO Currency</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Every physical or digital Objekt photocard collected grants you **COMO**, the voting currency inside the app. 1 Objekt scan = 1 COMO generated per Gravity event.
+                    </p>
+                </div>
+
+                <!-- Step 4: Gravity Voting -->
+                <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-3">
+                    <div class="w-8 h-8 rounded-xl bg-white text-black font-mono font-bold flex items-center justify-center">04</div>
+                    <h3 class="text-lg font-bold text-white">Grand Gravity & Voting</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Through **Gravity**, fans use their COMO to decide sub-unit member compositions, title tracks, sub-unit names, and fandom decisions directly shaping the group's discography.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= MEMBERS PAGE ================= -->
+        <div id="membersPage" class="hidden space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-black text-white uppercase tracking-tight">Member Roster</h2>
+                    <p class="text-xs text-neutral-400 mt-1">Complete S1 to S24 Member Directory</p>
+                </div>
+            </div>
+            <div id="memberGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4"></div>
+        </div>
+
+        <!-- ================= SUBUNITS PAGE ================= -->
+        <div id="subunitsPage" class="hidden space-y-6">
+            <div>
+                <h2 class="text-2xl font-black text-white uppercase tracking-tight">Sub-Unit Dimensions</h2>
+                <p class="text-xs text-neutral-400 mt-1">Official tripleS combinations created via Grand Gravity voting</p>
+            </div>
+            <div id="subunitsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- ================= DISCOGRAPHY PAGE ================= -->
+        <div id="discographyPage" class="hidden space-y-6">
+            <div>
+                <h2 class="text-2xl font-black text-white uppercase tracking-tight">Official Discography</h2>
+                <p class="text-xs text-neutral-400 mt-1">Complete album and digital single archive of tripleS and its dimensions</p>
+            </div>
+            <div id="discographyGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+
+        <!-- ================= GLOSSARY PAGE ================= -->
+        <div id="glossaryPage" class="hidden space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-black text-white uppercase tracking-tight">Fandom Glossary</h2>
+                    <p class="text-xs text-neutral-400 mt-1">A-Z Terms, slang, and concepts essential for every WAV</p>
+                </div>
+                <div class="relative max-w-xs w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500 text-xs"></i>
+                    <input type="text" id="glossarySearchInput" placeholder="Filter terms..." 
+                        class="w-full bg-neutral-900 border border-neutral-800 rounded-xl pl-9 pr-4 py-2 text-xs focus:outline-none focus:border-white text-neutral-200">
+                </div>
+            </div>
+            <div id="glossaryList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+
+        <!-- ================= FANSITES PAGE ================= -->
+        <div id="fansitesPage" class="hidden space-y-6">
+            <div>
+                <h2 class="text-2xl font-black text-white uppercase tracking-tight">Member Fansites Directory</h2>
+                <p class="text-xs text-neutral-400 mt-1">Fan photography and support masterlist per member (X/Twitter accounts)</p>
+            </div>
+
+            <div class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar" id="fansiteMemberFilter">
+                <!-- Filter buttons rendered via JS -->
+            </div>
+
+            <div id="fansitesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- ================= LORE & INFO PAGE ================= -->
+        <div id="lorePage" class="hidden space-y-6">
+            <div>
+                <h2 class="text-2xl font-black text-white uppercase tracking-tight">Things To Know & Lore</h2>
+                <p class="text-xs text-neutral-400 mt-1">Fascinating facts, HAUS living quarters system, daily Signals, and trivia</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-3">
+                    <div class="text-xs font-mono text-neutral-400 uppercase">Living System</div>
+                    <h3 class="text-xl font-black text-white">The HAUS System</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Members lived in specialized accommodation houses known as HAUS (e.g., SEOUL HAUS, TOKYO HAUS). Roommate configurations changed over time, creating unique bonds captured daily in Signal vlogs.
+                    </p>
+                </div>
+
+                <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-3">
+                    <div class="text-xs font-mono text-neutral-400 uppercase">Daily Content</div>
+                    <h3 class="text-xl font-black text-white">Daily 'Signal' Vlogs</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Unlike traditional K-pop release schedules, MODHAUS uploads daily behind-the-scenes vlogs titled 'Signal' on YouTube, documenting member reveals, dorm life, and preparation for promotions.
+                    </p>
+                </div>
+
+                <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-3">
+                    <div class="text-xs font-mono text-neutral-400 uppercase">Fandom Name</div>
+                    <h3 class="text-xl font-black text-white">WAV</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        The official fandom name 'WAV' signifies the fans creating a continuous sound wave that flows alongside tripleS.
+                    </p>
+                </div>
+
+                <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 space-y-3">
+                    <div class="text-xs font-mono text-neutral-400 uppercase">Production Leadership</div>
+                    <h3 class="text-xl font-black text-white">MODHAUS & Jaden Jeong</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Founded by visionary producer Jaden Jeong (formerly known for LOONA's creative direction), MODHAUS established tripleS as an open-architecture fan governance K-pop group.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Data and Logic -->
+    <script>
+        // DISCOGRAPHY DATA
+        const TRIPLES_DISCOGRAPHY = [
+            {
+                title: "ASSEMBLE24",
+                unit: "OT24 (Full Group)",
+                type: "Full Album",
+                date: "2024.05.08",
+                titleTrack: "Girls Never Die",
+                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/240513_tripleS_Yoon_Seo-yeon.jpg/800px-240513_tripleS_Yoon_Seo-yeon.jpg",
+                tracks: ["S", "Girls Never Die", "Heart Raider", "Midnight Flower", "White Soul Sneakers", "Chiyou", "24", "Beyond the Beyond"]
+            },
+            {
+                title: "Performante",
+                unit: "Visionary Vision (VV)",
+                type: "Sub-Unit Mini Album",
+                date: "2024.10.23",
+                titleTrack: "Performante",
+                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/240513_tripleS_Jeong_Hye-rin.jpg/800px-240513_tripleS_Jeong_Hye-rin.jpg",
+                tracks: ["Performante", "Visionary", "Atmosphere", "Bionic Power"]
+            },
+            {
+                title: "ACCESS",
+                unit: "Acid Angel from Asia",
+                type: "Sub-Unit Mini Album",
+                date: "2022.10.28",
+                titleTrack: "Generation",
+                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/240513_tripleS_Kim_Yoo-yeon.jpg/800px-240513_tripleS_Kim_Yoo-yeon.jpg",
+                tracks: ["Access", "Generation", "Rolex", "Charla", "Dimension"]
+            },
+            {
+                title: "AESTHETIC",
+                unit: "+(KR)ystal Eyes",
+                type: "Sub-Unit Mini Album",
+                date: "2023.05.04",
+                titleTrack: "Cherry Talk",
+                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/240513_tripleS_Kim_Chae-yeon.jpg/800px-240513_tripleS_Kim_Chae-yeon.jpg",
+                tracks: ["Cherry Talk", "Touch", "Hide & Seek", "Deja-Vu"]
+            },
+            {
+                title: "⫸ (Girls' Capitalism)",
+                unit: "LOVElution",
+                type: "Sub-Unit Mini Album",
+                date: "2023.08.17",
+                titleTrack: "Girls' Capitalism",
+                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/240513_tripleS_Gong_Yu-bin.jpg/800px-240513_tripleS_Gong_Yu-bin.jpg",
+                tracks: ["Girls' Capitalism", "Complexity", "Black Soul Dress", "Speed Love"]
+            },
+            {
+                title: "⟡ (Invincible)",
+                unit: "EVOLution",
+                type: "Sub-Unit Mini Album",
+                date: "2023.10.11",
+                titleTrack: "Invincible",
+                cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/240513_tripleS_Kotone.jpg/800px-240513_tripleS_Kotone.jpg",
+                tracks: ["Invincible", "Rhodanthe", "Heavy Metal Wings", "37.5 Celsius"]
+            }
+        ];
+
+        // GLOSSARY DATA
+        const TRIPLES_GLOSSARY = [
+            { term: "COSMO", def: "The official MODHAUS smartphone app used by fans to scan Objekts, collect COMO, and participate in Gravity voting." },
+            { term: "Objekt", def: "Digital or physical collectible photocards of tripleS members. Scanning physical Objekts into COSMO mints Como tokens." },
+            { term: "COMO", def: "The utility token currency generated by owning Objekts. Used as voting power during Gravity events." },
+            { term: "Gravity", def: "An official fan voting event held inside the COSMO app where WAVs vote on group decisions, sub-unit members, or song selections." },
+            { term: "Dimension", def: "A sub-unit formed within tripleS. Dimensions can be temporary or project-based." },
+            { term: "HAUS", def: "The dormitories and living spaces where tripleS members reside together." },
+            { term: "Signal", def: "Daily video blog episodes released on YouTube documenting member debuts, living in the HAUS, and group activities." },
+            { term: "WAV", def: "The official fandom name of tripleS, representing soundwaves created alongside the group." }
+        ];
+
+        // FANSITES DATA
+        const TRIPLES_FANSITES = [
+            { member: "S1 Yoon SeoYeon", name: "Cerulean Voice", handle: "@cerulean_sy", link: "https://x.com" },
+            { member: "S1 Yoon SeoYeon", name: "SeoYeon Archive", handle: "@sy_archive", link: "https://x.com" },
+            { member: "S2 Jeong HyeRin", name: "Cat Dance Studio", handle: "@hyerin_cat", link: "https://x.com" },
+            { member: "S3 Lee JiWoo", name: "JiWoo Bear", handle: "@jiwoo_bear", link: "https://x.com" },
+            { member: "S5 Kim YooYeon", name: "YooYeon Focus", handle: "@yooyean_focus", link: "https://x.com" },
+            { member: "S7 Kim NaKyoung", name: "NaKyoung Snap", handle: "@nakyoung_snap", link: "https://x.com" },
+            { member: "S10 Seo DaHyun", name: "Vocal DaHyun", handle: "@dahyun_vocal", link: "https://x.com" },
+            { member: "S24 JiYeon", name: "Swan Lake", handle: "@jiyeon_swan", link: "https://x.com" }
+        ];
+
+        // SUBUNITS DATA
+        const TRIPLES_SUBUNITS = [
+            { name: "Acid Angel from Asia", code: "AAA", debut: "2022.10.28", titleTrack: "Generation", members: ["S2", "S5", "S7", "S8"], description: "The first Grand Gravity sub-unit that blew up viral with track 'Generation'." },
+            { name: "+(KR)ystal Eyes", code: "KRE", debut: "2023.05.04", titleTrack: "Cherry Talk", members: ["S1", "S3", "S4", "S6"], description: "Retro 90s Y2K inspired dimension sub-unit." },
+            { name: "LOVElution", code: "LOVElution", debut: "2023.08.17", titleTrack: "Girls' Capitalism", members: ["S1", "S2", "S8", "S9", "S10", "S13", "S14", "S15"], description: "8-member refreshing pop energy sub-unit." },
+            { name: "EVOLution", code: "EVOLution", debut: "2023.10.11", titleTrack: "Invincible", members: ["S3", "S4", "S5", "S6", "S7", "S11", "S12", "S16"], description: "Powerful high-energy dance performance dimension." },
+            { name: "Visionary Vision", code: "VV", debut: "2024.10.23", titleTrack: "Performante", members: ["S2", "S5", "S7", "S8", "S9", "S11", "S12", "S13", "S14", "S15", "S17", "S24"], description: "12-member dance performance unit." }
+        ];
+
+        // MEMBERS DATA
+        const TRIPLES_MEMBERS = [
+            { sNum: "S1", name: "Yoon SeoYeon", korName: "윤서연", birthday: "2003.08.06", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/240513_tripleS_Yoon_Seo-yeon.jpg/800px-240513_tripleS_Yoon_Seo-yeon.jpg", subunits: ["+(KR)ystal Eyes", "LOVElution"] },
+            { sNum: "S2", name: "Jeong HyeRin", korName: "정혜린", birthday: "2007.04.12", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/240513_tripleS_Jeong_Hye-rin.jpg/800px-240513_tripleS_Jeong_Hye-rin.jpg", subunits: ["Acid Angel from Asia", "LOVElution", "Visionary Vision"] },
+            { sNum: "S3", name: "Lee JiWoo", korName: "이지우", birthday: "2005.10.24", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/240513_tripleS_Lee_Ji-woo.jpg/800px-240513_tripleS_Lee_Ji-woo.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
+            { sNum: "S4", name: "Kim ChaeYeon", korName: "김채연", birthday: "2004.12.04", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/240513_tripleS_Kim_Chae-yeon.jpg/800px-240513_tripleS_Kim_Chae-yeon.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
+            { sNum: "S5", name: "Kim YooYeon", korName: "김유연", birthday: "2001.02.09", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/240513_tripleS_Kim_Yoo-yeon.jpg/800px-240513_tripleS_Kim_Yoo-yeon.jpg", subunits: ["Acid Angel from Asia", "EVOLution", "Visionary Vision"] },
+            { sNum: "S6", name: "Kim SooMin", korName: "김수민", birthday: "2007.10.03", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/240513_tripleS_Kim_Soo-min.jpg/800px-240513_tripleS_Kim_Soo-min.jpg", subunits: ["+(KR)ystal Eyes", "EVOLution"] },
+            { sNum: "S7", name: "Kim NaKyoung", korName: "김나경", birthday: "2002.10.13", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/240513_tripleS_Kim_Na-kyoung.jpg/800px-240513_tripleS_Kim_Na-kyoung.jpg", subunits: ["Acid Angel from Asia", "EVOLution", "Visionary Vision"] },
+            { sNum: "S8", name: "Gong YuBin", korName: "공유빈", birthday: "2005.02.03", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/240513_tripleS_Gong_Yu-bin.jpg/800px-240513_tripleS_Gong_Yu-bin.jpg", subunits: ["Acid Angel from Asia", "LOVElution", "Visionary Vision"] },
+            { sNum: "S9", name: "Kaede", korName: "카에데", birthday: "2005.12.20", nationality: "Japan 🇯🇵", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/240513_tripleS_Kaede.jpg/800px-240513_tripleS_Kaede.jpg", subunits: ["LOVElution", "Visionary Vision"] },
+            { sNum: "S10", name: "Seo DaHyun", korName: "서다현", birthday: "2003.01.08", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/240513_tripleS_Seo_Da-hyun.jpg/800px-240513_tripleS_Seo_Da-hyun.jpg", subunits: ["LOVElution", "Aria"] },
+            { sNum: "S11", name: "Kotone", korName: "코토네", birthday: "2004.03.10", nationality: "Japan 🇯🇵", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/240513_tripleS_Kotone.jpg/800px-240513_tripleS_Kotone.jpg", subunits: ["EVOLution", "Visionary Vision"] },
+            { sNum: "S12", name: "Kwak YeonJi", korName: "곽연지", birthday: "2008.01.08", nationality: "South Korea 🇰🇷", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/240513_tripleS_Kwak_Yeon-ji.jpg/800px-240513_tripleS_Kwak_Yeon-ji.jpg", subunits: ["EVOLution", "Visionary Vision"] }
+        ];
+
+        let currentPage = 'home';
+
+        function switchPage(page) {
+            currentPage = page;
+            const pages = ['home', 'guide', 'members', 'subunits', 'discography', 'glossary', 'fansites', 'lore'];
+            
+            pages.forEach(p => {
+                const el = document.getElementById(p + 'Page');
+                if (el) el.classList.add('hidden');
+                
+                const navBtn = document.getElementById('nav' + p.charAt(0).toUpperCase() + p.slice(1) + 'Btn');
+                if (navBtn) navBtn.className = "px-3 py-2 rounded-xl transition-all font-semibold text-neutral-400 hover:text-white";
+                
+                const mNavBtn = document.getElementById('mNav' + p.charAt(0).toUpperCase() + p.slice(1));
+                if (mNavBtn) mNavBtn.className = "px-3 py-1.5 rounded-lg whitespace-nowrap bg-neutral-900 text-neutral-300 border border-neutral-800 font-medium";
+            });
+
+            const activeEl = document.getElementById(page + 'Page');
+            if (activeEl) activeEl.classList.remove('hidden');
+
+            const activeNavBtn = document.getElementById('nav' + page.charAt(0).toUpperCase() + page.slice(1) + 'Btn');
+            if (activeNavBtn) activeNavBtn.className = "px-3 py-2 rounded-xl transition-all font-bold bg-white text-black";
+
+            const activeMNavBtn = document.getElementById('mNav' + page.charAt(0).toUpperCase() + page.slice(1));
+            if (activeMNavBtn) activeMNavBtn.className = "px-3 py-1.5 rounded-lg whitespace-nowrap bg-white text-black font-bold";
+
+            // Render views as needed
+            if (page === 'home') renderHomePreview();
+            if (page === 'members') renderMembers();
+            if (page === 'subunits') renderSubunits();
+            if (page === 'discography') renderDiscography();
+            if (page === 'glossary') renderGlossary();
+            if (page === 'fansites') renderFansites();
+        }
+
+        function renderHomePreview() {
+            const preview = document.getElementById('homeMemberPreview');
+            if (!preview) return;
+            preview.innerHTML = TRIPLES_MEMBERS.slice(0, 12).map(m => `
+                <div onclick="switchPage('members')" class="bg-neutral-900 rounded-2xl border border-neutral-800 p-2 cursor-pointer hover:border-neutral-500 transition-all">
+                    <img src="${m.photo}" alt="${m.name}" class="w-full aspect-square object-cover rounded-xl bg-black mb-2 grayscale hover:grayscale-0 transition-all">
+                    <span class="text-[10px] font-mono font-bold text-neutral-400">${m.sNum}</span>
+                    <h4 class="font-bold text-xs text-white truncate">${m.name}</h4>
+                </div>
+            `).join('');
+        }
+
+        function renderMembers() {
+            const grid = document.getElementById('memberGrid');
+            if (!grid) return;
+            grid.innerHTML = TRIPLES_MEMBERS.map(m => `
+                <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-3 hover:border-neutral-500 transition-all space-y-2">
+                    <img src="${m.photo}" class="w-full aspect-square object-cover rounded-xl bg-black grayscale hover:grayscale-0 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-black text-white border border-neutral-800">${m.sNum}</span>
+                        <span class="text-[10px] text-neutral-400">${m.nationality}</span>
+                    </div>
+                    <h3 class="font-bold text-sm text-white">${m.name}</h3>
+                    <p class="text-[11px] text-neutral-400">${m.korName}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderSubunits() {
+            const grid = document.getElementById('subunitsGrid');
+            if (!grid) return;
+            grid.innerHTML = TRIPLES_SUBUNITS.map(u => `
+                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono font-bold px-2.5 py-1 bg-white text-black rounded">${u.code}</span>
+                        <span class="text-[10px] font-mono text-neutral-500">${u.debut}</span>
+                    </div>
+                    <h3 class="text-lg font-black text-white">${u.name}</h3>
+                    <p class="text-xs text-neutral-400">${u.description}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderDiscography() {
+            const grid = document.getElementById('discographyGrid');
+            if (!grid) return;
+            grid.innerHTML = TRIPLES_DISCOGRAPHY.map(d => `
+                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-5 space-y-4">
+                    <img src="${d.cover}" class="w-full aspect-square object-cover rounded-xl bg-black border border-neutral-800">
+                    <div>
+                        <span class="text-[10px] font-mono uppercase bg-neutral-800 text-neutral-300 px-2 py-0.5 rounded">${d.unit}</span>
+                        <h3 class="text-lg font-black text-white mt-1">${d.title}</h3>
+                        <p class="text-xs text-neutral-400 mt-0.5">Title Track: <strong class="text-white">${d.titleTrack}</strong></p>
+                    </div>
+                    <div class="pt-3 border-t border-neutral-800 text-xs text-neutral-400 font-mono">
+                        <span>${d.type}</span> · <span>${d.date}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderGlossary() {
+            const list = document.getElementById('glossaryList');
+            if (!list) return;
+            const filter = (document.getElementById('glossarySearchInput')?.value || '').toLowerCase();
+            const filtered = TRIPLES_GLOSSARY.filter(g => g.term.toLowerCase().includes(filter) || g.def.toLowerCase().includes(filter));
+            
+            list.innerHTML = filtered.map(g => `
+                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-4 space-y-1">
+                    <h4 class="font-bold text-sm text-white font-mono">${g.term}</h4>
+                    <p class="text-xs text-neutral-400 leading-relaxed">${g.def}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderFansites() {
+            const grid = document.getElementById('fansitesGrid');
+            if (!grid) return;
+            grid.innerHTML = TRIPLES_FANSITES.map(f => `
+                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-4 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-mono text-neutral-400">${f.member}</span>
+                        <h4 class="font-bold text-sm text-white">${f.name}</h4>
+                        <p class="text-xs text-neutral-500 font-mono">${f.handle}</p>
+                    </div>
+                    <a href="${f.link}" target="_blank" class="px-3 py-1.5 rounded-xl bg-white text-black text-xs font-bold hover:bg-neutral-200">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        // Search listeners
+        document.getElementById('glossarySearchInput')?.addEventListener('input', renderGlossary);
+
+        window.onload = function() {
+            switchPage('home');
+        };
+    </script>
+</body>
+</html>
