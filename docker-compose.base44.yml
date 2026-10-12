@@ -1,0 +1,29 @@
+# Base44 development environment.
+#
+# This repo is a single self-contained static page (plus one older revision):
+# the extensionless files "SS" (SSS.log — current revision) and "S" (previous
+# revision). There is no build step and no package manager, so nginx serves the
+# files straight from the bind-mounted source and an edit shows up on the next
+# page load — no rebuild needed.
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      # User-facing entry point.
+      - "3000:3000"
+    volumes:
+      # Each entry file is mounted on its own: the repo directory is mode 0700 on
+      # the sandbox host, which the unprivileged nginx worker user cannot
+      # traverse, so mounting the repo root as the web root returns 403. Add any
+      # future static file (or asset directory) as its own volume entry.
+      - ./SS:/usr/share/nginx/html/SS:ro
+      - ./S:/usr/share/nginx/html/S:ro
+      - ./docker/nginx.base44.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: on-failure
+    healthcheck:
+      # Probes the actually served content of both pages, not just an open port.
+      test: ["CMD-SHELL", "wget -q -O /tmp/hc http://127.0.0.1:3000/ && grep -q 'tripleS' /tmp/hc && wget -q -O /tmp/hc2 http://127.0.0.1:3000/S && grep -q 'tripleS' /tmp/hc2 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
